@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Registration Form</title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="form-container animate__animated animate__fadeInUp">
+        <div class="form-header">
+            <h1 class="animate__animated animate__fadeIn">Create Account</h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">Join our community today</p>
+        </div>
+        
+        <form id="registrationForm" class="animate__animated animate__fadeIn animate__delay-1s">
+            <div class="form-group">
+                <label for="name">Full Name*</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name">
+                <span class="error-message" id="name-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <span class="error-message" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                <span class="error-message" id="phone-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password*</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Create a password">
+                    <button type="button" class="toggle-password" aria-label="Show password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+                <span class="error-message" id="password-error"></span>
+                
+                <div class="password-strength-container">
+                    <div class="strength-meter">
+                        <div class="strength-bar strength-bar-1"></div>
+                        <div class="strength-bar strength-bar-2"></div>
+                        <div class="strength-bar strength-bar-3"></div>
+                        <div class="strength-bar strength-bar-4"></div>
+                    </div>
+                    <div class="strength-feedback">
+                        <span class="strength-text">Password Strength</span>
+                        <span class="strength-rating"></span>
+                    </div>
+                    <ul class="password-requirements">
+                        <li class="requirement length"><i class="fas fa-check"></i> At least 8 characters</li>
+                        <li class="requirement uppercase"><i class="fas fa-check"></i> 1 uppercase letter</li>
+                        <li class="requirement number"><i class="fas fa-check"></i> 1 number</li>
+                        <li class="requirement special"><i class="fas fa-check"></i> 1 special character</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password*</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
+                    <button type="button" class="toggle-password" aria-label="Show password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+                <span class="error-message" id="confirm-password-error"></span>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="btn-text">Register</span>
+                <span class="btn-loader"></span>
+            </button>
+        </form>
+
+        <div id="success-message" class="success-message animate__animated">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+            <div class="success-text">
+                <h3>Registration Successful!</h3>
+                <p>Thank you for signing up</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="form.js"></script>
+</body>
+</html>

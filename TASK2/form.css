@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #4361ee;
+    --primary-hover: #3a56d4;
+    --success-color: #4cc9f0;
+    --error-color: #f72585;
+    --text-color: #2b2d42;
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #6c757d;
+    --white: #ffffff;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --weak-color: #ff4d4f;
+    --fair-color: #faad14;
+    --good-color: #52c41a;
+    --strong-color: #13c2c2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4361ee, #4cc9f0);
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.form-container {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    transform-origin: top center;
+    animation-duration: 0.8s;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #4361ee, #4cc9f0);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    animation-duration: 1s;
+}
+
+.form-header p {
+    color: var(--dark-gray);
+    font-size: 1rem;
+    animation-duration: 1s;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+    transform: translateY(0);
+    transition: var(--transition);
+}
+
+.form-group:hover {
+    transform: translateY(-2px);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--medium-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: var(--light-gray);
+}
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--dark-gray);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    background-color: var(--white);
+}
+
+input::placeholder {
+    color: var(--dark-gray);
+    opacity: 0.6;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+    height: 1rem;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: var(--transition);
+}
+
+.error-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Password Strength Container */
+.password-strength-container {
+    margin-top: 0.75rem;
+    background-color: var(--light-gray);
+    padding: 1rem;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.strength-meter {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.strength-bar {
+    height: 4px;
+    flex: 1;
+    background-color: var(--medium-gray);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.strength-feedback {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.strength-text {
+    color: var(--dark-gray);
+}
+
+.strength-rating {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.password-requirements {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.password-requirements li {
+    display: flex;
+    align-items: center;
+    font-size: 0.8125rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.25rem;
+}
+
+.password-requirements li i {
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.password-requirements li.valid i {
+    opacity: 1;
+    color: var(--good-color);
+}
+
+.password-requirements li.valid {
+    color: var(--text-color);
+}
+
+/* Strength states */
+.strength-weak .strength-bar-1 {
+    background-color: var(--weak-color);
+}
+
+.strength-fair .strength-bar-1,
+.strength-fair .strength-bar-2 {
+    background-color: var(--fair-color);
+}
+
+.strength-good .strength-bar-1,
+.strength-good .strength-bar-2,
+.strength-good .strength-bar-3 {
+    background-color: var(--good-color);
+}
+
+.strength-strong .strength-bar-1,
+.strength-strong .strength-bar-2,
+.strength-strong .strength-bar-3,
+.strength-strong .strength-bar-4 {
+    background-color: var(--strong-color);
+}
+
+.strength-weak .strength-rating {
+    color: var(--weak-color);
+}
+
+.strength-fair .strength-rating {
+    color: var(--fair-color);
+}
+
+.strength-good .strength-rating {
+    color: var(--good-color);
+}
+
+.strength-strong .strength-rating {
+    color: var(--strong-color);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.btn-text {
+    display: inline-block;
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.btn-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 3px solid transparent;
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.submit-btn.loading .btn-text {
+    opacity: 0;
+}
+
+.submit-btn.loading .btn-loader {
+    opacity: 1;
+}
+
+.success-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.success-message.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.checkmark {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+}
+
+.checkmark__circle {
+    stroke: var(--success-color);
+    stroke-width: 2;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke: var(--success-color);
+    stroke-width: 2;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.success-text {
+    text-align: center;
+}
+
+.success-text h3 {
+    color: var(--success-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.success-text p {
+    color: var(--dark-gray);
+}
+
+/* Error state */
+input.error {
+    border-color: var(--error-color);
+    animation: shake 0.5s;
+}
+
+/* Success state */
+input.success {
+    border-color: var(--success-color);
+}
+
+/* Animations */
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .form-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+}
