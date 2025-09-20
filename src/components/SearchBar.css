@@ -1,0 +1,105 @@
+.search-bar {
+  margin: 3rem auto;
+  max-width: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1.2rem;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  outline: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.search-bar input::placeholder {
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.search-bar input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #00bfff;
+  box-shadow: 0 0 10px #00bfff80;
+}
+
+.search-bar svg {
+  position: absolute;
+  right: 1rem;
+  color: #ccc;
+  font-size: 1.3rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.search-bar svg:hover {
+  transform: scale(1.2) rotate(10deg);
+  color: #00bfff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0f2027);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  list-style: none;
+  padding: 0.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.suggestions-list li:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
